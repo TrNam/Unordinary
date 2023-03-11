@@ -4,9 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 
 export default function HomeScreen({navigation}) {
     return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#222831'}}>
             <Text
-            onPress={() => navigation.navigate('Home')}
             style={{ fontSize: 26, fontWeight: 'bold'}}>Home Screen</Text>
         </View>
     );
