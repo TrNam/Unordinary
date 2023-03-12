@@ -10,14 +10,6 @@ const SECTIONS = [
         ],
     },
     {
-        header: 'For you',
-        items: [
-            { id:'yourWorkouts', icon: '', label: 'Your Workouts', type: 'link' },
-            { id:'yourRoutine', icon: '', label: 'Your Routines', type: 'link' },
-            { id:'yourMeals', icon: '', label: 'Your Meals', type: 'link' },
-        ],
-    },
-    {
         header: 'Help',
         items: [
             { id:'about', icon: '', label: 'About Us', type: 'link' },
@@ -27,10 +19,10 @@ const SECTIONS = [
 ]
 
 export default function SettingsScreen() {
-    const [form, setForm] = useState({
-        language: 'English',
-        darkMode: true,
-    });
+    // const [form, setForm] = useState({
+    //     language: 'English',
+    //     darkMode: true,
+    // });
     return(
         <SafeAreaView style={styles.mainContainer}>
             <ScrollView contentContainerStyle={styles.container}>
@@ -58,7 +50,7 @@ export default function SettingsScreen() {
                                             <View style={styles.rowSpacer}/>
 
                                             {type === 'select' && (
-                                                <Text style={styles.rowValue}>{form[id]}</Text>
+                                                <Text style={styles.rowValue}></Text>
                                             )}
                                         </View>
                                     </TouchableOpacity>
@@ -81,12 +73,10 @@ const styles = StyleSheet.create({
     },
     container: {
         paddingVertical: 24,
-        //backgroundColor: 'yellow',
     },
     header: {
         paddingHorizontal: 24,
         marginBottom: 12,
-        //backgroundColor: 'red',
     },
     title: {
         fontSize: 32,
@@ -100,10 +90,8 @@ const styles = StyleSheet.create({
     },
     section: {
         paddingTop: 12,
-        //backgroundColor: 'blue',
     },
     sectionHeader: {
-        //backgroundColor:'white',
         paddingHorizontal: 24,
         paddingVertical: 8,
     },
