@@ -50,16 +50,39 @@ export default function NavContainer(){
                         />
                     </View>
                 },
+                // In case we want the same header for all screens
+                // headerTitle: () => {
+                //     let rn = route.name;
+                //     let title;
+                //     let subTitle;
+
+                //     if (rn === settingsName) {
+                //         title = settingsName;
+                //         subTitle = 'Update your preference here';
+                //     }
+
+                //     return <View style={styles.headerStyles}>
+                //         <Text style={styles.headerTitleStyles}>{title}</Text>
+                //         <Text style={styles.headerSubtitleStyles}>{subTitle}</Text>
+                //     </View>
+                // },
+                // headerStyle: {
+                //     backgroundColor: '#222831',
+                //     elevation: 0,
+                //     shadowOpacity: 0, // or shadowColor: 'transparent',
+                //     paddingVertical: 24,
+                // },
+
                 tabBarShowLabel: false,
                 headerShown: false,
-                // tabBarActiveTintColor: 'tomato',
-                // tabBarInactiveTintColor: 'grey',
+                // tabBarActiveTintColor: '',
+                // tabBarInactiveTintColor: '',
                 // tabBarLabelStyle:{fontSize: 15},
-                tabBarStyle:{backgroundColor: '#222831', borderTopWidth: 0, padding:10},
+                tabBarStyle:{backgroundColor: '#222831', borderTopWidth: 0},
 
             })}
             >
-                <Tab.Screen name={homeName} component={HomeScreen}/>
+                <Tab.Screen name={homeName} component={HomeScreen} options={{headerShown: false}}/>
                 <Tab.Screen name={settingsName} component={SettingsScreen}/>
                 <Tab.Screen name={workoutLogName} component={WorkoutLogScreen}/>
                 <Tab.Screen name={timerName} component={TimerScreen}/>
@@ -81,4 +104,19 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25,
     },
+//     In case we want the same header for all screens
+    // headerTitleStyles: {
+    //     fontSize: 32,
+    //     fontWeight: '700',
+    //     color: '#EEEEEE',
+    // },
+    // headerSubtitleStyles: {
+    //     fontSize: 15,
+    //     fontWeight: '500',
+    //     color: '#929292',
+    // },
+    // headerStyles: {
+    //     paddingHorizontal: 24,
+    //     marginBottom: 12,
+    // },
 });
