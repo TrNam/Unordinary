@@ -46,17 +46,16 @@ export default function NavContainer(){
                         <Image
                             source={iconImg}
                             resizeMode='contain'
-                            // style={styles.iconImageStyles}
                             style={[styles.iconImageStyles, {tintColor: focused ? '#EEEEEE' : 'grey'}]}
                         />
-                        {/* <Text style={styles.iconTextStyles}>{rn}</Text> */}
                     </View>
                 },
                 tabBarShowLabel: false,
+                // headerShown: false,
                 // tabBarActiveTintColor: 'tomato',
                 // tabBarInactiveTintColor: 'grey',
                 // tabBarLabelStyle:{fontSize: 15},
-                tabBarStyle:{backgroundColor: '#222831'},
+                tabBarStyle:{backgroundColor: '#222831', borderTopWidth: 0},
 
             })}
             >
@@ -76,13 +75,10 @@ const styles = StyleSheet.create({
     },
     tabNavStyles: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     iconImageStyles: {
         width: 25,
         height: 25,
     },
-    // iconTextStyles: {
-
-    // }
 });
