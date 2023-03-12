@@ -14,4 +14,3 @@ export default function FoodPrepScreen({navigation}) {
 const styles = StyleSheet.create({
 
 });
-  

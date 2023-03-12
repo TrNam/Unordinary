@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, Image } from 'react-native';
 
 const SECTIONS = [
     {
         header: 'Preferences',
         items: [
-            { id:'language', icon: '', label: 'Language', type: 'select' },
-            { id:'darkMode', icon: '', label: 'Dark Mode', type: 'toggle' },
+            { id:'language', icon: require('../../assets/icons/language.png'), label: 'Language', type: 'select' },
+            { id:'darkMode', icon: require('../../assets/icons/night.png'), label: 'Dark Mode', type: 'toggle' },
         ],
     },
     {
         header: 'Help',
         items: [
-            { id:'about', icon: '', label: 'About Us', type: 'link' },
-            { id:'contact', icon: '', label: 'Contact Us', type: 'link' },
+            { id:'about', icon: require('../../assets/icons/about.png'), label: 'About Us', type: 'link' },
+            { id:'contact', icon: require('../../assets/icons/contact.png'), label: 'Contact Us', type: 'link' },
         ]
     },
 ]
@@ -44,7 +44,11 @@ export default function SettingsScreen() {
                                         // handle onPress
                                     }}>
                                         <View style={styles.row}>
-                                            {/* Add icon here */}
+
+                                            <View style={{justifyContent: 'center', alignItems: 'center',}}>
+                                                <Image source={icon} style={{width: 22, height: 22, marginRight: 12, tintColor: '#EEEEEE'}}/>
+                                            </View>
+
                                             <Text style={styles.rowLabel}>{label}</Text>
 
                                             <View style={styles.rowSpacer}/>
@@ -105,8 +109,8 @@ const styles = StyleSheet.create({
     rowWrapper: {
         paddingLeft: 24,
         borderTopWidth: 1,
-        borderColor: '#e3e3e3',
-        backgroundColor: '#fff',
+        borderColor: '#222831',
+        backgroundColor:'#393E46',
     },
     row: {
         height: 50,
@@ -118,7 +122,7 @@ const styles = StyleSheet.create({
     rowLabel: {
         fontSize: 17,
         fontWeight: '500',
-        color: '#000'
+        color: '#EEEEEE',
     },
     rowSpacer: {
         flex: 1,
