@@ -5,6 +5,10 @@ import { StatusBar } from 'expo-status-bar';
 export default function FoodPrepScreen({navigation}) {
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#222831'}}>
+            <StatusBar  
+                backgroundColor = "#222831"  
+                hidden = {false}    
+            />  
             <Text
             style={{ fontSize: 26, fontWeight: 'bold'}}> Food Prep Screen</Text>
         </View>

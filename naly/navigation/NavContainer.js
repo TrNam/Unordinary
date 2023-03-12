@@ -51,11 +51,11 @@ export default function NavContainer(){
                     </View>
                 },
                 tabBarShowLabel: false,
-                // headerShown: false,
+                headerShown: false,
                 // tabBarActiveTintColor: 'tomato',
                 // tabBarInactiveTintColor: 'grey',
                 // tabBarLabelStyle:{fontSize: 15},
-                tabBarStyle:{backgroundColor: '#222831', borderTopWidth: 0},
+                tabBarStyle:{backgroundColor: '#222831', borderTopWidth: 0, padding:10},
 
             })}
             >
