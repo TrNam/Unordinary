@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 
 export default function WorkoutLogScreen({navigation}) {
     return(

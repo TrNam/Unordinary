@@ -1,28 +1,74 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, Image, Switch } from 'react-native';
+
+// Colors, Fonts and Icons
+import {COLORS} from '../../assets/colors';
+import { FONTS } from '../../assets/fonts';
+import { ICONS } from '../../assets/icons';
 
 const SECTIONS = [
     {
         header: 'Preferences',
         items: [
-            { id:'language', icon: require('../../assets/icons/language.png'), label: 'Language', type: 'select' },
-            { id:'darkMode', icon: require('../../assets/icons/night.png'), label: 'Dark Mode', type: 'toggle' },
+            { id:'language', icon: ICONS.language, label: 'Language', type: 'select' },
+            { id:'nightMode', icon: ICONS.night, label: 'Night Mode', type: 'toggle' },
         ],
     },
     {
         header: 'Help',
         items: [
-            { id:'about', icon: require('../../assets/icons/about.png'), label: 'About Us', type: 'link' },
-            { id:'contact', icon: require('../../assets/icons/contact.png'), label: 'Contact Us', type: 'link' },
+            { id:'about', icon: ICONS.about, label: 'About Us', type: 'link' },
+            { id:'contact', icon: ICONS.contact, label: 'Contact Us', type: 'link' },
         ]
     },
 ]
 
 export default function SettingsScreen() {
-    // const [form, setForm] = useState({
-    //     language: 'English',
-    //     darkMode: true,
-    // });
+    const [form, setForm] = React.useState({
+        language: 'English',
+        nightMode: true,
+    });
+
+
+    function Row(props) {
+        return(
+            <View style={styles.row}>
+                <View style={styles.iconContainer}>
+                    <Image source={props.icon} style={styles.icon}/>
+                </View>
+    
+                <Text style={styles.rowLabel}>{props.label}</Text>
+    
+                <View style={styles.rowSpacer}/>
+    
+                {props.type === 'select' && (
+                    <Text style={styles.rowValue}>{form[props.id]}</Text>
+                )}
+    
+                {props.type === 'toggle' &&
+                    <Switch 
+                        value={form[props.id]} 
+                        onValueChange={value =>
+                            setForm({...form, [props.id]: value})
+                        }
+                    />
+                   
+                }
+    
+                {['select', 'link'].includes(props.type) && (
+                    <View style={styles.iconContainer}>
+                        <Image 
+                            source={ICONS.arrowRight}
+                            style={{tintColor:COLORS.brightGrey, width:19, height:19,}}
+                        />
+                    </View>
+                )}
+    
+            </View>
+        )
+    }
+
+
     return(
         <SafeAreaView style={styles.mainContainer}>
             <ScrollView contentContainerStyle={styles.container}>
@@ -40,26 +86,22 @@ export default function SettingsScreen() {
                         <View style={styles.sectionBody}>
                             {items.map(({ label, id, type, icon }, index) => (
                                 <View style={[styles.rowWrapper, index === 0 && { borderTopWidth: 0 }]} key={id}>
-                                    <TouchableOpacity onPress={() => {
-                                        // handle onPress
-                                    }}>
-                                        <View style={styles.row}>
 
-                                            <View style={{justifyContent: 'center', alignItems: 'center',}}>
-                                                <Image source={icon} style={{width: 22, height: 22, marginRight: 12, tintColor: '#EEEEEE'}}/>
-                                            </View>
+                                    {['select', 'link'].includes(type) && (
+                                        <TouchableOpacity onPress={() => {
+                                            // handle onPress
+                                        }}>
+                                            <Row id={id} label={label} type={type} icon={icon}/>
+                                        </TouchableOpacity>
+                                    )}
 
-                                            <Text style={styles.rowLabel}>{label}</Text>
+                                    {type === 'toggle' && (
+                                        <Row id={id} label={label} type={type} icon={icon}/>
+                                    )}
 
-                                            <View style={styles.rowSpacer}/>
-
-                                            {type === 'select' && (
-                                                <Text style={styles.rowValue}></Text>
-                                            )}
-                                        </View>
-                                    </TouchableOpacity>
                                 </View>
                             ))}
+                            
                         </View>
 
                     </View>
@@ -70,10 +112,12 @@ export default function SettingsScreen() {
     );
 }
 
+
+
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor:'#222831'
+        backgroundColor: COLORS.primaryBg,
     },
     container: {
         paddingVertical: 24,
@@ -83,14 +127,14 @@ const styles = StyleSheet.create({
         marginBottom: 12,
     },
     title: {
-        fontSize: 32,
-        fontWeight: '700',
-        color: '#EEEEEE',
+        fontSize: FONTS.titleSize,
+        fontWeight: FONTS.titleWeight,
+        color: COLORS.white,
     },
     subtitle: {
-        fontSize: 15,
-        fontWeight: '500',
-        color: '#929292',
+        fontSize: FONTS.subtitleSize,
+        fontWeight: FONTS.subtitleWeight,
+        color: COLORS.grey,
     },
     section: {
         paddingTop: 12,
@@ -100,17 +144,17 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
     },
     sectionHeaderText: {
-        fontSize: 14,
-        fontWeight: '600',
-        color: '#a7a7a7',
+        fontSize: FONTS.headerSize,
+        fontWeight: FONTS.headerWeight,
+        color: COLORS.darkGrey,
         textTransform: 'uppercase',
         letterSpacing: 1.2,
     },
     rowWrapper: {
         paddingLeft: 24,
         borderTopWidth: 1,
-        borderColor: '#222831',
-        backgroundColor:'#393E46',
+        borderColor: COLORS.primaryBg,
+        backgroundColor: COLORS.secondaryBg,
     },
     row: {
         height: 50,
@@ -120,13 +164,27 @@ const styles = StyleSheet.create({
         paddingRight: 24,
     },
     rowLabel: {
-        fontSize: 17,
-        fontWeight: '500',
-        color: '#EEEEEE',
+        fontSize: FONTS.bodySize,
+        fontWeight: FONTS.bodyWeight,
+        color: COLORS.white,
     },
     rowSpacer: {
         flex: 1,
-        backgroundColor: 'red'
     },
+    rowValue: {
+        fontSize: FONTS.bodySize,
+        color: COLORS.darkGrey,
+        marginRight: 4,
+    },
+    iconContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    icon: {
+        width: 22,
+        height: 22,
+        marginRight: 12,
+        tintColor: COLORS.white,
+    }
 });
   
