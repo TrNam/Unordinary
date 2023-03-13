@@ -1,8 +1,12 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+// Colors and Icons
+import { COLORS } from '../assets/colors';
+import { ICONS } from '../assets/icons';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
@@ -21,6 +25,7 @@ const workoutLogName = 'Workout Log';
 const Tab = createBottomTabNavigator();
 
 export default function NavContainer(){
+    
     return(
         <NavigationContainer>
             <Tab.Navigator
@@ -31,35 +36,58 @@ export default function NavContainer(){
                     let rn = route.name;
 
                     if (rn === homeName) { 
-                        iconImg = require('../assets/icons/home.png');
+                        iconImg = ICONS.home;
                     } else if (rn === settingsName) {
-                        iconImg = require('../assets/icons/settings.png');
+                        iconImg = ICONS.settings;
                     } else if (rn === workoutLogName) {
-                        iconImg = require('../assets/icons/workout.png');
+                        iconImg = ICONS.workout;
                     } else if (rn === timerName) {
-                        iconImg = require('../assets/icons/timer.png');
+                        iconImg = ICONS.timer;
                     } else if (rn === foodPrepName) {
-                        iconImg = require('../assets/icons/eat.png');
+                        iconImg = ICONS.eat;
                     }
 
-                    return <View style={styles.tabNavStyles}>
+                    return <View style={styles.tabNav}>
                         <Image
                             source={iconImg}
                             resizeMode='contain'
-                            style={[styles.iconImageStyles, {tintColor: focused ? '#EEEEEE' : 'grey'}]}
+                            style={[styles.iconImage, {tintColor: focused ? COLORS.white : COLORS.grey}]}
                         />
                     </View>
                 },
+                // In case we want the same header for all screens
+                // headerTitle: () => {
+                //     let rn = route.name;
+                //     let title;
+                //     let subTitle;
+
+                //     if (rn === settingsName) {
+                //         title = settingsName;
+                //         subTitle = 'Update your preference here';
+                //     }
+
+                //     return <View style={styles.headerStyles}>
+                //         <Text style={styles.headerTitleStyles}>{title}</Text>
+                //         <Text style={styles.headerSubtitleStyles}>{subTitle}</Text>
+                //     </View>
+                // },
+                // headerStyle: {
+                //     backgroundColor: COLORS.primaryBg,
+                //     elevation: 0,
+                //     shadowOpacity: 0, // or shadowColor: 'transparent',
+                //     paddingVertical: 24,
+                // },
+
                 tabBarShowLabel: false,
                 headerShown: false,
-                // tabBarActiveTintColor: 'tomato',
-                // tabBarInactiveTintColor: 'grey',
+                // tabBarActiveTintColor: '',
+                // tabBarInactiveTintColor: '',
                 // tabBarLabelStyle:{fontSize: 15},
-                tabBarStyle:{backgroundColor: '#222831', borderTopWidth: 0, padding:10},
+                tabBarStyle:{backgroundColor: COLORS.primaryBg, borderTopWidth: 0},
 
             })}
             >
-                <Tab.Screen name={homeName} component={HomeScreen}/>
+                <Tab.Screen name={homeName} component={HomeScreen} options={{headerShown: false}}/>
                 <Tab.Screen name={settingsName} component={SettingsScreen}/>
                 <Tab.Screen name={workoutLogName} component={WorkoutLogScreen}/>
                 <Tab.Screen name={timerName} component={TimerScreen}/>
@@ -69,16 +97,32 @@ export default function NavContainer(){
     )
 }
 
+
 const styles = StyleSheet.create({
-    navContainerStyles: {
-        backgroundColor: '#222831'
+    navContainer: {
+        backgroundColor: COLORS.primaryBg,
     },
-    tabNavStyles: {
+    tabNav: {
         justifyContent: 'center',
         alignItems: 'center',
     },
-    iconImageStyles: {
+    iconImage: {
         width: 25,
         height: 25,
     },
+//     In case we want the same header for all screens
+    // headerTitleStyles: {
+    //     fontSize: FONTS.titleSize,
+    //     fontWeight: FONTS.titleWeight,
+    //     color: COLORS.white,
+    // },
+    // headerSubtitleStyles: {
+    //     fontSize: FONTS.subtitleSize,
+    //     fontWeight: FONTS.subtitleWeight,
+    //     color: COLORS.darkGrey,
+    // },
+    // headerStyles: {
+    //     paddingHorizontal: 24,
+    //     marginBottom: 12,
+    // },
 });
