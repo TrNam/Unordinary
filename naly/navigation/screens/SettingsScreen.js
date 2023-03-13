@@ -10,8 +10,17 @@ const SECTIONS = [
     {
         header: 'Preferences',
         items: [
-            { id:'language', icon: ICONS.language, label: 'Language', type: 'select' },
+            { id:'language', icon: ICONS.language, label: 'Language', type: 'select' }, // English, Vietnamese, Tamil, Mandarin, French, Korean
+            { id:'weightUnits', icon: ICONS.language, label: 'Weight Units', type: 'select' },// lbs, kg, stones, etc.
             { id:'nightMode', icon: ICONS.night, label: 'Night Mode', type: 'toggle' },
+        ],
+    },
+    {
+        // TODO - add icons
+        header: 'For You',
+        items: [
+            { id:'progressPhotos', icon: ICONS.language, label: 'Take Progress Photos', type: 'toggle' },
+            { id:'weightTrack', icon: ICONS.night, label: 'Track your weights', type: 'toggle' },
         ],
     },
     {

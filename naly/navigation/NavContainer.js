@@ -38,7 +38,7 @@ export default function NavContainer(){
                     if (rn === homeName) { 
                         iconImg = ICONS.home;
                     } else if (rn === workoutsname) {
-                        iconImg = ICONS.workout;
+                        iconImg = ICONS.muscles;
                     } else if (rn === trackName) {
                         iconImg = ICONS.calendar;
                     } else if (rn === timerName) {
