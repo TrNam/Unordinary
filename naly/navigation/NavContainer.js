@@ -10,17 +10,17 @@ import { ICONS } from '../assets/icons';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
-import SettingsScreen from './screens/SettingsScreen';
 import FoodPrepScreen from './screens/FoodPrepScreen';
 import TimerScreen from './screens/TimerScreen';
-import WorkoutLogScreen from './screens/WorkoutLogScreen';
+import TrackScreen from './screens/TrackScreen';
+import WorkoutsScreen from './screens/WorkoutsScreen';
 
 // Screen names
 const homeName = 'Home';
-const settingsName = 'Settings'; 
 const foodPrepName = 'Food Prep';
 const timerName = 'Timer';
-const workoutLogName = 'Workout Log';
+const trackName = 'Track Workouts';
+const workoutsname = 'Workouts';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,10 +37,10 @@ export default function NavContainer(){
 
                     if (rn === homeName) { 
                         iconImg = ICONS.home;
-                    } else if (rn === settingsName) {
-                        iconImg = ICONS.settings;
-                    } else if (rn === workoutLogName) {
+                    } else if (rn === workoutsname) {
                         iconImg = ICONS.workout;
+                    } else if (rn === trackName) {
+                        iconImg = ICONS.calendar;
                     } else if (rn === timerName) {
                         iconImg = ICONS.timer;
                     } else if (rn === foodPrepName) {
@@ -87,9 +87,10 @@ export default function NavContainer(){
 
             })}
             >
-                <Tab.Screen name={homeName} component={HomeScreen} options={{headerShown: false}}/>
-                <Tab.Screen name={settingsName} component={SettingsScreen}/>
-                <Tab.Screen name={workoutLogName} component={WorkoutLogScreen}/>
+                {/* <Tab.Screen name={homeName} component={HomeScreen} options={{headerShown: false}}/> */}
+                <Tab.Screen name={homeName} component={HomeScreen}/>
+                <Tab.Screen name={workoutsname} component={WorkoutsScreen}/>
+                <Tab.Screen name={trackName} component={TrackScreen}/>
                 <Tab.Screen name={timerName} component={TimerScreen}/>
                 <Tab.Screen name={foodPrepName} component={FoodPrepScreen}/>
             </Tab.Navigator>

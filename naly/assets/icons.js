@@ -2,6 +2,7 @@
 export const ICONS = {
     about: require('./icons/about.png'),
     arrowRight: require('./icons/arrow-right.png'),
+    calendar: require('./icons/calendar.png'),
     contact: require('./icons/contact.png'),
     eat: require('./icons/eat.png'),
     home: require('./icons/home.png'),
