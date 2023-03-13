@@ -1,15 +1,42 @@
 // Add them in alphabetical orders
 export const ICONS = {
+    // A
     about: require('./icons/about.png'),
     arrowRight: require('./icons/arrow-right.png'),
+    // B
+    // C
     calendar: require('./icons/calendar.png'),
     contact: require('./icons/contact.png'),
+    // D
+    // E
     eat: require('./icons/eat.png'),
+    // F
+    // G
+    // H
     home: require('./icons/home.png'),
+    // I
+    // J
+    // K
+    // L
     language: require('./icons/language.png'),
+    // M
     muscles: require('./icons/muscles.png'),
+    // N
     night: require('./icons/night.png'),
+    // O
+    // P
+    // Q
+    // R
+    routines: require('./icons/routines.png'),
+    // S
     settings: require('./icons/settings.png'),
+    // T
     timer: require('./icons/timer.png'),
-    workout: require('./icons/workout.png'),
+    // U
+    // V
+    // W
+    workouts: require('./icons/workouts.png'),
+    // X
+    // Y
+    // Z
 }
