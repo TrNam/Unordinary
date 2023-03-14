@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 
 export default function FoodPrepScreen({}) {
     return(
