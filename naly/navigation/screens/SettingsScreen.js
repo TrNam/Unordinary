@@ -196,4 +196,3 @@ const styles = StyleSheet.create({
         tintColor: COLORS.white,
     }
 });
-  

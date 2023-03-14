@@ -7,6 +7,7 @@ import { FONTS } from '../../assets/fonts';
 import { ICONS } from '../../assets/icons';
 
 const TABS = [
+    // TODO - change icons
     { name: "Today", icon: ICONS.workouts},
     { name: 'Previous', icon: ICONS.routines},
     { name: 'Progress', icon: ICONS.routines},
