@@ -6,9 +6,10 @@ import {COLORS} from '../../assets/colors';
 import { FONTS } from '../../assets/fonts';
 import { ICONS } from '../../assets/icons';
 
-export default function HomeScreen({}) {
+export default function HomeScreen({navigation}) {
     return(
         <SafeAreaView style={styles.mainContainer}>
+
             <TouchableOpacity>
                 <View>
                     <Image 
