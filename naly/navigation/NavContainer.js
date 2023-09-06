@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, Image } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -8,19 +8,25 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { COLORS } from '../assets/colors';
 import { ICONS } from '../assets/icons';
 
+// Styles
+import { styles } from '../styles/NavContainer.component.style';
+// var s = require('../styles/NavContainer.component.style');
+
 // Screens
 import HomeScreen from './screens/HomeScreen';
-import FoodPrepScreen from './screens/FoodPrepScreen';
+import EatScreen from './screens/EatScreen';
 import TimerScreen from './screens/TimerScreen';
 import TrackScreen from './screens/TrackScreen';
 import WorkoutsScreen from './screens/WorkoutsScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 // Screen names
 const homeName = 'Home';
-const foodPrepName = 'Food Prep';
+const eatName = 'Eat';
 const timerName = 'Timer';
 const trackName = 'Track Workouts';
 const workoutsname = 'Workouts';
+const settingsName = 'Settings';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,7 +49,7 @@ export default function NavContainer(){
                         iconImg = ICONS.calendar;
                     } else if (rn === timerName) {
                         iconImg = ICONS.timer;
-                    } else if (rn === foodPrepName) {
+                    } else if (rn === eatName) {
                         iconImg = ICONS.eat;
                     }
 
@@ -92,38 +98,8 @@ export default function NavContainer(){
                 <Tab.Screen name={workoutsname} component={WorkoutsScreen}/>
                 <Tab.Screen name={trackName} component={TrackScreen}/>
                 <Tab.Screen name={timerName} component={TimerScreen}/>
-                <Tab.Screen name={foodPrepName} component={FoodPrepScreen}/>
+                <Tab.Screen name={eatName} component={EatScreen}/>
             </Tab.Navigator>
         </NavigationContainer>
     )
 }
-
-
-const styles = StyleSheet.create({
-    navContainer: {
-        backgroundColor: COLORS.primaryBg,
-    },
-    tabNav: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    iconImage: {
-        width: 25,
-        height: 25,
-    },
-//     In case we want the same header for all screens
-    // headerTitleStyles: {
-    //     fontSize: FONTS.titleSize,
-    //     fontWeight: FONTS.titleWeight,
-    //     color: COLORS.white,
-    // },
-    // headerSubtitleStyles: {
-    //     fontSize: FONTS.subtitleSize,
-    //     fontWeight: FONTS.subtitleWeight,
-    //     color: COLORS.darkGrey,
-    // },
-    // headerStyles: {
-    //     paddingHorizontal: 24,
-    //     marginBottom: 12,
-    // },
-});
